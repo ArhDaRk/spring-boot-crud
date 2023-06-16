@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -20,6 +21,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public void update(User user) {
+        Long id = user.getId();
+        User updateUser = userRepository.findById(id).orElseThrow();
+        updateUser.setFirstName(user.getFirstName());
+        updateUser.setLastName(user.getLastName());
+        updateUser.setEmail(user.getEmail());
+        updateUser.setAge(user.getAge());
+        userRepository.save(updateUser);
     }
 
     @Override

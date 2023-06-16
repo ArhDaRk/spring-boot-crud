@@ -45,7 +45,7 @@ public class UserController {
 
     @PutMapping("/update-user")
     public String updateUser(User user) {
-        userService.save(user);
+        userService.update(user);
         return "redirect:/table";
     }
 }
