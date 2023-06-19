@@ -20,11 +20,10 @@ public class UserController {
     }
 
     @GetMapping("/table")
-    public String userTable(Model model, User user) {
+    public String createUserTable(Model model, User user) {
         model.addAttribute("userList", userService.findAll());
         return "table";
     }
-
     @PostMapping("/table")
     public String createUser(User user) {
         userService.save(user);
