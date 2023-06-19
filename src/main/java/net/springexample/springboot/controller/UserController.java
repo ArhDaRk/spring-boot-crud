@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/table")
-    public String createUserTable(Model model, User user) {
+    public String getUsers(Model model, User user) {
         model.addAttribute("userList", userService.findAll());
         return "table";
     }
