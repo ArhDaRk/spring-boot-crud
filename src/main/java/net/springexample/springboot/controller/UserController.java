@@ -19,21 +19,21 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/table")
+    @GetMapping("/users")
     public String getUsers(Model model, User user) {
         model.addAttribute("userList", userService.findAll());
-        return "table";
+        return "users";
     }
-    @PostMapping("/table")
+    @PostMapping("/users")
     public String createUser(User user) {
         userService.save(user);
-        return "redirect:/table";
+        return "redirect:/users";
     }
 
-    @DeleteMapping("/table/{id}")
+    @DeleteMapping("/users/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.delete(id);
-        return "redirect:/table";
+        return "redirect:/users";
     }
 
     @GetMapping("/update-user/{id}")
@@ -45,6 +45,6 @@ public class UserController {
     @PutMapping("/update-user")
     public String updateUser(User user) {
         userService.update(user);
-        return "redirect:/table";
+        return "redirect:/users";
     }
 }
